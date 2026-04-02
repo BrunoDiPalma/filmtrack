@@ -12,14 +12,14 @@ export async function getMovies(req, res) {
 
 export async function createMovie(req, res) {
   try {
-    const { title, genre } = req.body;
-    if (!title || !genre) {
+    const { title, year } = req.body;
+    if (!title || !year) {
       return errorResponse(res, "Todos os campos são obrigatórios!", 400);
     }
 
     const [result] = await pool.query(
-      `INSERT INTO movies(title, genre) VALUES(?, ?)`,
-      [title, genre],
+      `INSERT INTO movies(title, year) VALUES(?, ?)`,
+      [title, year],
     );
 
     return successResponse(
@@ -64,16 +64,16 @@ export async function deleteMovie(req, res) {
 export async function updateMovie(req, res) {
   try {
     const { id } = req.params;
-    const { title, genre } = req.body;
+    const { title, year } = req.body;
     if (!id) {
       return errorResponse(res, "ID é obrigatório!", 400);
     }
-    if (!title || !genre) {
+    if (!title || !year) {
       return errorResponse(res, "Todos os campos devem ser preenchidos", 400);
     }
     const [result] = await pool.query(
-      "UPDATE movies SET title = ?, genre = ? WHERE id = ?",
-      [title, genre, id],
+      "UPDATE movies SET title = ?, year = ? WHERE id = ?",
+      [title, year, id],
     );
 
     if (result.affectedRows === 0) {
