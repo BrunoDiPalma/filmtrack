@@ -21,31 +21,31 @@ function App() {
   };
 
   useEffect(() => {
-  fetchMovies();
-}, []);
+    fetchMovies();
+  }, []);
 
   useEffect(() => {
-  const delayDebounce = setTimeout(async () => {
-    if (!searchTerm.trim()) {
-      setSearchResults([]);
-      return;
-    }
+    const delayDebounce = setTimeout(async () => {
+      if (!searchTerm.trim()) {
+        setSearchResults([]);
+        return;
+      }
 
-    const response = await fetch(
-      `http://www.omdbapi.com/?s=${searchTerm}&apikey=fa7cf79e`
-    );
+      const response = await fetch(
+        `http://www.omdbapi.com/?s=${searchTerm}&apikey=fa7cf79e`,
+      );
 
-    const data = await response.json();
+      const data = await response.json();
 
-    if (data.Search) {
-      setSearchResults(data.Search);
-    } else {
-      setSearchResults([]);
-    }
-  }, 500);
+      if (data.Search) {
+        setSearchResults(data.Search);
+      } else {
+        setSearchResults([]);
+      }
+    }, 500);
 
-  return () => clearTimeout(delayDebounce);
-}, [searchTerm]);
+    return () => clearTimeout(delayDebounce);
+  }, [searchTerm]);
 
   const handleDelete = async (id) => {
     try {
@@ -69,7 +69,10 @@ function App() {
     const newMovie = {
       title: movie.Title,
       year: movie.Year,
-      imdbID: movie.imdbID,
+      imdbID: movie.imdbID || null,
+      poster_url: movie.Poster !== "N/A" ? movie.Poster : null,
+      status: "watchlist",
+      rating: null,
     };
 
     const alreadyExists = movies.some((m) => m.imdbID === newMovie.imdbID);
@@ -91,13 +94,8 @@ function App() {
         body: JSON.stringify(newMovie),
       });
 
-      setMovies((prev) => [...prev, newMovie]);
-
+      fetchMovies();
       setMessage("Filme adicionado com sucesso!");
-
-      setTimeout(() => {
-        setMessage("");
-      }, 3000);
     } catch (error) {
       setMessage("Erro ao adicionar filme", error);
     } finally {
@@ -109,18 +107,17 @@ function App() {
     <div>
       <h1>FilmTrack! 🎥</h1>
       <input
-        value={searchTerm} placeholder="Buscar filmes..."
+        value={searchTerm}
+        placeholder="Buscar filmes..."
         onChange={(e) => {
-          const value = e.target.value
-          setSearchTerm(value)
+          const value = e.target.value;
+          setSearchTerm(value);
 
-          if(!value.trim()) {
-            searchResults([])
+          if (!value.trim()) {
+            setSearchResults([]);
           }
-
         }}
       />
-
 
       {message && <p>{message}</p>}
 

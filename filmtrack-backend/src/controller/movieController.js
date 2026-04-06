@@ -12,14 +12,14 @@ export async function getMovies(req, res) {
 
 export async function createMovie(req, res) {
   try {
-    const { title, year } = req.body;
-    if (!title || !year) {
+    const { title, year, imdbID, poster_url, status, rating } = req.body;
+    if (!title || !year || !imdbID || !status) {
       return errorResponse(res, "Todos os campos são obrigatórios!", 400);
     }
 
     const [result] = await pool.query(
-      `INSERT INTO movies(title, year) VALUES(?, ?)`,
-      [title, year],
+      `INSERT INTO movies(title, year, imdbID, poster_url, status, rating) VALUES(?, ?, ?, ?, ?, ?)`,
+      [title, year, imdbID, poster_url, status, rating],
     );
 
     return successResponse(
