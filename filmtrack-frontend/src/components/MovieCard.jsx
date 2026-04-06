@@ -1,6 +1,6 @@
-export function MovieCard({ movie, onSave }) {
+export function MovieCard({ movie, onSave, saving }) {
   return (
-    <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px"}}>
+    <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px" }}>
       <img
         src={
           movie.Poster !== "NA"
@@ -13,7 +13,9 @@ export function MovieCard({ movie, onSave }) {
       <h3>{movie.Title}</h3>
       <p>{movie.Year}</p>
 
-      <button onClick={() => onSave(movie)}>Salvar em sua lista</button>
+      <button disabled={saving} onClick={() => onSave(movie)}>
+        Salvar em sua lista
+      </button>
     </div>
   );
 }
