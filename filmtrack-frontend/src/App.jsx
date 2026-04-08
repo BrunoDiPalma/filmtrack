@@ -13,7 +13,7 @@ function App() {
 
   const fetchMovies = async () => {
     try {
-      const response = await fetch(`http://localhost:3000`);
+      const response = await fetch(`https://filmtrack-backend.onrender.com`);
       const data = await response.json();
       setMovies(data.data);
     } catch (error) {
@@ -70,7 +70,7 @@ function App() {
       return;
     }
     try {
-      await fetch(`http://localhost:3000/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
         method: "DELETE",
       });
 
@@ -103,7 +103,7 @@ function App() {
     setSaving(true);
 
     try {
-      await fetch(`http://localhost:3000`, {
+      await fetch(`${import.meta.env.VITE_API_URL}`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
