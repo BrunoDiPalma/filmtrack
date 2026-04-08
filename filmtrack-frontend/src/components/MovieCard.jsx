@@ -1,20 +1,26 @@
 export function MovieCard({ movie, onSave, saving }) {
+  const poster =
+    movie.Poster !== "N/A"
+      ? movie.Poster
+      : "https://via.placeholder.com/300x450";
+
   return (
-    <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px" }}>
-      <img
-        src={
-          movie.Poster !== "N/A"
-            ? movie.Poster
-            : "https://via.placeholder.com/150"
-        }
-        alt={movie.Title}
-      />
+    <div className="card">
+      <div className="card-image">
+        <img src={poster} alt={movie.Title} />
+      </div>
 
-      <h3>{movie.Title}</h3>
-      <p>{movie.Year}</p>
+      <div className="card-info">
+        <h3>{movie.Title}</h3>
+        <p>{movie.Year}</p>
+      </div>
 
-      <button disabled={saving} onClick={() => onSave(movie)}>
-        Salvar em sua lista
+      <button
+        className="card-btn"
+        disabled={saving}
+        onClick={() => onSave(movie)}
+      >
+        Salvar
       </button>
     </div>
   );

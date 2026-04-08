@@ -24,6 +24,16 @@ function App() {
   };
 
   useEffect(() => {
+    if(!message) return;
+
+    const timer = setTimeout(() => {
+      setMessage("")
+    }, 3000)
+
+    return () => clearTimeout(timer)
+  }, [message])
+
+  useEffect(() => {
     fetchMovies();
   }, []);
 
@@ -66,10 +76,6 @@ function App() {
 
       setMessage("Filme excluído com sucesso!");
 
-      setTimeout(() => {
-        setMessage("");
-      }, 3000);
-
       setMovies((prevMovies) => prevMovies.filter((movie) => movie.id !== id));
     } catch (error) {
       console.error("Erro ao excluir filme da lista", error);
@@ -106,9 +112,7 @@ function App() {
       });
 
       fetchMovies();
-      setMessage("✅ Filme adicionado!!");
-      setSearchTerm("")
-      setSearchResults([])
+      setMessage("✅ Filme adicionado!");
     } catch (error) {
       setMessage("Erro ao adicionar filme");
       console.error(error);
@@ -118,7 +122,7 @@ function App() {
   };
 
   return (
-    <div>
+    <div className="container">
       <h1>FilmTrack! 🎥</h1>
       <input
         value={searchTerm}
@@ -138,22 +142,24 @@ function App() {
 
       {searchTerm.trim() ? (
         searchResults.length > 0 ? (
-          searchResults.map((movie) => (
-            <MovieCard
-            key={movie.imdbID}
-            movie={movie}
-            onSave={handleSave}
-            saving={saving}
-            />
-          ))
-        ) : ( <p>Nenhum filme encontrado</p>)
-
+          <div className="grid">
+            {searchResults.map((movie) => (
+              <MovieCard
+                key={movie.imdbID}
+                movie={movie}
+                onSave={handleSave}
+                saving={saving}
+              />
+            ))}
+          </div>
+        ) : (
+          <p>Nenhum filme encontrado</p>
+        )
       ) : movies.length > 0 ? (
         <MovieList movies={movies} onDelete={handleDelete} />
       ) : (
         <p>Nenhum filme salvo</p>
       )}
-
     </div>
   );
 }
