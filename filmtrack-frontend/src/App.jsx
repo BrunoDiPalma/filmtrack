@@ -9,6 +9,7 @@ function App() {
   const [searchResults, setSearchResults] = useState([]);
   const [message, setMessage] = useState("");
   const [saving, setSaving] = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const fetchMovies = async () => {
     try {
@@ -17,6 +18,8 @@ function App() {
       setMovies(data.data);
     } catch (error) {
       console.error("Erro ao buscar filmes", error);
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -31,16 +34,20 @@ function App() {
         return;
       }
 
-      const response = await fetch(
-        `http://www.omdbapi.com/?s=${searchTerm}&apikey=fa7cf79e`,
-      );
+      try {
+        const response = await fetch(
+          `http://www.omdbapi.com/?s=${searchTerm}&apikey=fa7cf79e`,
+        );
 
-      const data = await response.json();
+        const data = await response.json();
 
-      if (data.Search) {
-        setSearchResults(data.Search);
-      } else {
-        setSearchResults([]);
+        if (data.Search) {
+          setSearchResults(data.Search);
+        } else {
+          setSearchResults([]);
+        }
+      } catch (error) {
+        console.error("Erro ao buscar filmes", error);
       }
     }, 500);
 
@@ -48,6 +55,10 @@ function App() {
   }, [searchTerm]);
 
   const handleDelete = async (id) => {
+    const confirmDelete = window.confirm("Tem certeza que deseja excluir?");
+    if (!confirmDelete) {
+      return;
+    }
     try {
       await fetch(`http://localhost:3000/${id}`, {
         method: "DELETE",
@@ -95,9 +106,12 @@ function App() {
       });
 
       fetchMovies();
-      setMessage("Filme adicionado com sucesso!");
+      setMessage("✅ Filme adicionado!!");
+      setSearchTerm("")
+      setSearchResults([])
     } catch (error) {
-      setMessage("Erro ao adicionar filme", error);
+      setMessage("Erro ao adicionar filme");
+      console.error(error);
     } finally {
       setSaving(false);
     }
@@ -120,19 +134,26 @@ function App() {
       />
 
       {message && <p>{message}</p>}
+      {loading && <p>Carregando...</p>}
 
       {searchTerm.trim() ? (
-        searchResults.map((movie) => (
-          <MovieCard
+        searchResults.length > 0 ? (
+          searchResults.map((movie) => (
+            <MovieCard
             key={movie.imdbID}
             movie={movie}
             onSave={handleSave}
             saving={saving}
-          />
-        ))
-      ) : (
+            />
+          ))
+        ) : ( <p>Nenhum filme encontrado</p>)
+
+      ) : movies.length > 0 ? (
         <MovieList movies={movies} onDelete={handleDelete} />
+      ) : (
+        <p>Nenhum filme salvo</p>
       )}
+
     </div>
   );
 }

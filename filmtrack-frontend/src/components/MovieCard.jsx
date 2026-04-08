@@ -3,7 +3,7 @@ export function MovieCard({ movie, onSave, saving }) {
     <div style={{ border: "1px solid #ccc", padding: "10px", margin: "10px" }}>
       <img
         src={
-          movie.Poster !== "NA"
+          movie.Poster !== "N/A"
             ? movie.Poster
             : "https://via.placeholder.com/150"
         }
