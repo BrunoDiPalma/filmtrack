@@ -15,7 +15,7 @@ function App() {
     try {
       const response = await fetch(`https://filmtrack-backend.onrender.com`);
       const data = await response.json();
-      setMovies(data.data);
+      setMovies(data?.data || []);
     } catch (error) {
       console.error("Erro ao buscar filmes", error);
     } finally {
@@ -46,7 +46,7 @@ function App() {
 
       try {
         const response = await fetch(
-          `http://www.omdbapi.com/?s=${searchTerm}&apikey=fa7cf79e`,
+          `https://www.omdbapi.com/?s=${searchTerm}&apikey=fa7cf79e`,
         );
 
         const data = await response.json();

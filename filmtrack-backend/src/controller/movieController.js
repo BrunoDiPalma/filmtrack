@@ -6,7 +6,8 @@ export async function getMovies(req, res) {
     const [rows] = await pool.query("SELECT * from movies");
     return successResponse(res, rows);
   } catch (error) {
-    return errorResponse(res, "Erro ao buscar filmes", 500);
+    console.error(error);
+    return successResponse(res, []);
   }
 }
 
