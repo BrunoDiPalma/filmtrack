@@ -2,10 +2,13 @@ import pool from "../database/database.js";
 import { errorResponse, successResponse } from "../utils/response.js";
 
 export async function getMovies(req, res) {
-  return res.json({
-    success: true,
-    data: ["TESTE BRUNO"],
-  });
+  try {
+    const [rows] = await pool.query("SELECT * from movies");
+    return successResponse(res, rows);
+  } catch (error) {
+    console.error(error);
+    return successResponse(res, []);
+  }
 }
 
 export async function createMovie(req, res) {
