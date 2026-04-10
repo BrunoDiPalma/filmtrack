@@ -3,9 +3,9 @@ import { getMovies, createMovie, deleteMovie, updateMovie} from "../controller/m
 
 const router = Router();
 
-router.get("/", getMovies);
-router.post("/", createMovie);
-router.delete("/:id", deleteMovie);
-router.put("/:id", updateMovie);
+router.get("/movies", getMovies);
+router.post("/movies", createMovie);
+router.delete("/movies/:id", deleteMovie);
+router.put("/movies/:id", updateMovie);
 
 export default router;

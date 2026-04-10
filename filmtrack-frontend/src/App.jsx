@@ -12,8 +12,9 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const fetchMovies = async () => {
+    setLoading(true)
     try {
-      const response = await fetch(`https://filmtrack-backend.onrender.com`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}`);
       const data = await response.json();
       setMovies(data?.data || []);
     } catch (error) {
