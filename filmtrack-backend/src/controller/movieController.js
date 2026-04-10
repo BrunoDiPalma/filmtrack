@@ -3,7 +3,12 @@ import { errorResponse, successResponse } from "../utils/response.js";
 
 export async function getMovies(req, res) {
   try {
+    console.log("Teste DB");
+    
     const [rows] = await pool.query("SELECT * from movies");
+    
+    console.log("RESULTADO DO BANCO:", rows);
+
     return successResponse(res, rows);
   } catch (error) {
     console.error(error);
