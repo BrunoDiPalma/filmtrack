@@ -12,9 +12,9 @@ function App() {
   const [loading, setLoading] = useState(false);
 
   const fetchMovies = async () => {
-    setLoading(true)
+    setLoading(true);
     try {
-      const response = await fetch(`${import.meta.env.VITE_API_URL}`);
+      const response = await fetch(`${import.meta.env.VITE_API_URL}/movies`);
       const data = await response.json();
       setMovies(data?.data || []);
     } catch (error) {
@@ -25,14 +25,14 @@ function App() {
   };
 
   useEffect(() => {
-    if(!message) return;
+    if (!message) return;
 
     const timer = setTimeout(() => {
-      setMessage("")
-    }, 3000)
+      setMessage("");
+    }, 3000);
 
-    return () => clearTimeout(timer)
-  }, [message])
+    return () => clearTimeout(timer);
+  }, [message]);
 
   useEffect(() => {
     fetchMovies();
@@ -71,7 +71,7 @@ function App() {
       return;
     }
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}/${id}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/movies/${id}`, {
         method: "DELETE",
       });
 
@@ -104,7 +104,7 @@ function App() {
     setSaving(true);
 
     try {
-      await fetch(`${import.meta.env.VITE_API_URL}`, {
+      await fetch(`${import.meta.env.VITE_API_URL}/movies`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

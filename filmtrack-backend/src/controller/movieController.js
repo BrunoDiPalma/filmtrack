@@ -7,7 +7,7 @@ export async function getMovies(req, res) {
     return successResponse(res, rows);
   } catch (error) {
     console.error(error);
-    return successResponse(res, []);
+    return errorResponse(res, "Erro ao buscar filmes", 500);
   }
 }
 
