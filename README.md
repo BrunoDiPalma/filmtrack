@@ -1,5 +1,5 @@
 # 🎬 FilmTrack
-Aplicação fullstack para busca e gerenciamento de filmes, permitindo ao usuário pesquisar títulos, salvá-los em uma lista personalizada e gerenciar sua watchlist.
+Aplicação fullstack para busca e gerenciamento de filmes, permitindo ao usuário pesquisar títulos via API externa, salvá-los em uma lista personalizada e gerenciar sua própria watchlist.
 
 ## 🚀 Funcionalidades
 - 🔎 Busca de filmes em tempo real (API externa)
@@ -48,6 +48,17 @@ npm install
 npm run dev
 ```
 
+## 🌐 Projeto online
+Frontend:
+http://filmtrack-alpha.vercel.app/
+
+Backend:
+http://filmtrack-production-f86a.up.railway.app/movies
+
+## ☁️ Deploy
+- Frontend hospedado na Vercel
+- Backend e banco de dados hospedados no Railway
+
 ## 🌐 Estrutura do Projeto
 - Frontend: Interface com React
 - Backend: API REST com Express
@@ -60,7 +71,6 @@ Este projeto foi desenvolvido com o objetivo de praticar desenvolvimento fullsta
 - 🔐 Autenticação de usuários
 - ⭐ Sistema de avaliação de filmes
 - 🎬 Marcar como assistido
-- 🌍 Deploy completo
 
 ## 👨‍💻 Autor
 Desenvolvido por Bruno Di Palma 🚀
