@@ -1,13 +1,12 @@
 # 🎬 FilmTrack
-Aplicação fullstack para busca e gerenciamento de filmes, permitindo ao usuário pesquisar títulos via API externa, salvá-los em uma lista personalizada e gerenciar sua própria watchlist.
+Aplicação fullstack para busca e gerenciamento de filmes, permitindo ao usuário pesquisar títulos via API externa, salvá-los em uma lista personalizada e gerenciar sua própria watchlist. (Atualmente, a funcionalidade de watchlist está indisponível, devido encerramento da hospedagem gratuita do backend)
 
 ## 🚀 Funcionalidades
 - 🔎 Busca de filmes em tempo real (API externa)
 - ➕ Adicionar filmes à lista
 - 🗑️ Remover filmes da lista
-- 🚫 Evita duplicatas
-- 💬 Feedback visual para ações (mensagens automáticas)
-- 🎨 Interface moderna com animações (estilo streaming)
+- 🚫 Evitar duplicatas
+- 💬 Feedback visual (mensagens automáticas)
 
 ## 🛠️ Tecnologias utilizadas
 ### 🎨 Frontend
@@ -53,11 +52,12 @@ Frontend:
 http://filmtrack-alpha.vercel.app/
 
 Backend:
-http://filmtrack-production-f86a.up.railway.app/movies
+http://filmtrack-production-f86a.up.railway.app/movies  
+⚠️ O backend utilizado para gerenciamento da watchlist encontra-se temporariamente indisponível devido ao encerramento da hospedagem gratuita.
 
 ## ☁️ Deploy
 - Frontend hospedado na Vercel
-- Backend e banco de dados hospedados no Railway
+- Backend e banco de dados originalmente hospedados no Railway
 
 ## 🌐 Estrutura do Projeto
 - Frontend: Interface com React
@@ -68,9 +68,9 @@ http://filmtrack-production-f86a.up.railway.app/movies
 Este projeto foi desenvolvido com o objetivo de praticar desenvolvimento fullstack, integração com APIs externas e construção de interfaces modernas com foco em experiência do usuário.
 
 ## 📌 Próximas melhorias
-- 🔐 Autenticação de usuários
-- ⭐ Sistema de avaliação de filmes
-- 🎬 Marcar como assistido
+- Autenticação de usuários
+- Sistema de avaliação de filmes
+- Marcar como assistido
 
 ## 👨‍💻 Autor
-Desenvolvido por Bruno Di Palma 🚀
+Desenvolvido por Bruno Di Palma
