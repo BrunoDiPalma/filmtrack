@@ -1,5 +1,5 @@
-# 🎬 FilmTrack
-Aplicação fullstack para busca e gerenciamento de filmes, permitindo ao usuário pesquisar títulos via API externa, salvá-los em uma lista personalizada e gerenciar sua própria watchlist. (Atualmente, a funcionalidade de watchlist está indisponível, devido encerramento da hospedagem gratuita do backend)
+# 🎬 Filmtrack
+Aplicação full stack para busca e gerenciamento de filmes, permitindo ao usuário pesquisar títulos via API externa, salvá-los em uma lista personalizada e gerenciar sua própria watchlist. (Atualmente, a funcionalidade de watchlist está indisponível, devido encerramento da hospedagem gratuita do back-end)
 
 ## 🚀 Funcionalidades
 - 🔎 Busca de filmes em tempo real (API externa)
@@ -9,11 +9,11 @@ Aplicação fullstack para busca e gerenciamento de filmes, permitindo ao usuár
 - 💬 Feedback visual (mensagens automáticas)
 
 ## 🛠️ Tecnologias utilizadas
-### 🎨 Frontend
+### 🎨 Front-end
 - React
 - CSS3
 
-### ⚙️ Backend
+### ⚙️ Back-end
 - Node.js
 - Express
 
@@ -33,14 +33,14 @@ Aplicação fullstack para busca e gerenciamento de filmes, permitindo ao usuár
 git clone https://github.com/BrunoDiPalma/filmtrack.git
 ```
 
-### 2. Backend
+### 2. Back-end
 ```bash
 cd filmtrack-backend
 npm install
 npm run dev
 ```
 
-### 3. Frontend
+### 3. Front-end
 ```bash
 cd filmtrack-frontend
 npm install
@@ -48,24 +48,24 @@ npm run dev
 ```
 
 ## 🌐 Projeto online
-Frontend:
+Front-end:
 http://filmtrack-alpha.vercel.app/
 
-Backend:
+Back-end:
 http://filmtrack-production-f86a.up.railway.app/movies  
 ⚠️ O backend utilizado para gerenciamento da watchlist encontra-se temporariamente indisponível devido ao encerramento da hospedagem gratuita.
 
 ## ☁️ Deploy
-- Frontend hospedado na Vercel
-- Backend e banco de dados originalmente hospedados no Railway
+- Front-end hospedado na Vercel
+- Back-end e banco de dados originalmente hospedados no Railway
 
 ## 🌐 Estrutura do Projeto
-- Frontend: Interface com React
-- Backend: API REST com Express
+- Front-end: Interface com React
+- Back-end: API REST com Express
 - Banco: Persistência com MySQL
 
 ## 🎯 Objetivo
-Este projeto foi desenvolvido com o objetivo de praticar desenvolvimento fullstack, integração com APIs externas e construção de interfaces modernas com foco em experiência do usuário.
+Este projeto foi desenvolvido com o objetivo de praticar desenvolvimento full stack, integração com APIs externas e construção de interfaces modernas com foco em experiência do usuário.
 
 ## 📌 Próximas melhorias
 - Autenticação de usuários
@@ -73,4 +73,4 @@ Este projeto foi desenvolvido com o objetivo de praticar desenvolvimento fullsta
 - Marcar como assistido
 
 ## 👨‍💻 Autor
-Desenvolvido por Bruno Di Palma
+Bruno Di Palma
